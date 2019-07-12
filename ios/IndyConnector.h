@@ -9,6 +9,12 @@
 #ifndef IndyConnector_h
 #define IndyConnector_h
 
-void connectToLedger();
+@interface IndyConnector : NSObject
+
++ (void) connectToLedger:(void (^)(NSError *error))callback;
++ (void) createWallet:(NSString *)name callback:(void (^)(NSError *error))callback;
+
+@end
 
 #endif /* IndyConnector_h */
+

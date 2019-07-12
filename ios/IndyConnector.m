@@ -11,10 +11,12 @@
 
 #import "IndyConnector.h"
 
-NSString *walletConfig = @"{\"id\":\"wallet\"}";
+@implementation IndyConnector
+
 NSString *credentials = @"{\"key\":\"6nxtSiXFvBd593Y2DCed2dYvRY1PGK9WMtxCBjLzKgbw\", \"key_derivation_method\": \"RAW\"}";
 
-void openWallet() {
++ (void) openWallet:(NSString *)name callback:(void (^)(NSError *error))callback {
+    NSString *walletConfig = [NSString stringWithFormat:@"{\"id\":\"%@\"}", name];
     __block IndyHandle walletHandle;
     [[IndyWallet sharedInstance]
       openWalletWithConfig:walletConfig
@@ -29,22 +31,18 @@ void openWallet() {
     }];
 }
 
-void createWallet() {
++ (void) createWallet:(NSString *)name callback:(void (^)(NSError *error))callback {
+
+    NSString *walletConfig = [NSString stringWithFormat:@"{\"id\":\"%@\"}", name];
+  
     [[IndyWallet sharedInstance]
       createWalletWithConfig:walletConfig
       credentials:credentials
-      completion:^(NSError *error) {
-        if ([error code]) {
-          // [self.StatusText insertText: [error localizedDescription]];
-        } else {
-          // [self.StatusText insertText: @"OK\n"];
-          // [self openWallet];
-        }
-    }];
-
+      completion:callback
+    ];
 }
 
-void connectToLedger() {
++ (void) connectToLedger:(void (^)(NSError *error))callback {
   [IndyPool setProtocolVersion:@(2)
     completion:^(NSError *error) {
     if ([error code]) {
@@ -55,3 +53,5 @@ void connectToLedger() {
     }
   }];
 }
+
+@end

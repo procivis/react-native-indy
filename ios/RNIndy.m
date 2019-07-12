@@ -11,9 +11,20 @@
 RCT_EXPORT_MODULE()
 
 
-RCT_EXPORT_METHOD(createWallet:(NSString *)name)
+RCT_EXPORT_METHOD(
+  createWallet:(NSString *)name
+  resolver:(RCTPromiseResolveBlock)resolve
+  rejecter:(RCTPromiseRejectBlock)reject)
 {
-  connectToLedger();
+  [IndyConnector
+    createWallet:name
+    callback:^(NSError *error){
+    if (error && [error code]) {
+      reject(@"RNIndy", [error localizedDescription], error);
+    } else {
+      resolve(@(true));
+    }
+  }];
 }
 
 @end

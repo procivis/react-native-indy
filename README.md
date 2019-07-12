@@ -1,5 +1,5 @@
 
-# react-native-indy
+# React Native Indy SDK
 
 ## Getting started
 
@@ -9,8 +9,9 @@
 
 `$ react-native link react-native-indy`
 
-### Manual installation
+Add `Indy.framework` to Embedded libraries
 
+### Manual installation
 
 #### iOS
 
@@ -37,7 +38,7 @@
 ## Usage
 ```javascript
 import RNIndy from 'react-native-indy';
+import { createWallet } from 'react-native-indy';
 
-// TODO: What to do with the module?
-RNIndy;
+await createWallet("wallet1");
 ```
