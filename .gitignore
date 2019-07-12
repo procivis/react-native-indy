@@ -43,5 +43,3 @@ local.properties
 buck-out/
 \.buckd/
 *.keystore
-
-Indy.framework
