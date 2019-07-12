@@ -8,4 +8,3 @@
 @interface RNIndy : NSObject <RCTBridgeModule>
 
 @end
-  

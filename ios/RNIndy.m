@@ -1,5 +1,6 @@
 
 #import "RNIndy.h"
+#import "IndyConnector.h"
 
 @implementation RNIndy
 
@@ -9,5 +10,10 @@
 }
 RCT_EXPORT_MODULE()
 
+
+RCT_EXPORT_METHOD(createWallet:(NSString *)name)
+{
+  connectToLedger();
+}
+
 @end
-  

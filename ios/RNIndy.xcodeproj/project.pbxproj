@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94AE448E22D8C41E00F246E9 /* Indy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AE448D22D8C41E00F246E9 /* Indy.framework */; };
+		94AE449022D8C50B00F246E9 /* IndyConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AE448F22D8C50B00F246E9 /* IndyConnector.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNIndy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIndy.m */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNIndy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIndy.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		94AE448D22D8C41E00F246E9 /* Indy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Indy.framework; sourceTree = "<group>"; };
+		94AE448F22D8C50B00F246E9 /* IndyConnector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndyConnector.m; sourceTree = "<group>"; };
+		94AE449122D8C52800F246E9 /* IndyConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndyConnector.h; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNIndy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNIndy.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNIndy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNIndy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94AE448E22D8C41E00F246E9 /* Indy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +56,9 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				94AE448F22D8C50B00F246E9 /* IndyConnector.m */,
+				94AE449122D8C52800F246E9 /* IndyConnector.h */,
+				94AE448D22D8C41E00F246E9 /* Indy.framework */,
 				B3E7B5881CC2AC0600A0062D /* RNIndy.h */,
 				B3E7B5891CC2AC0600A0062D /* RNIndy.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -95,6 +104,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -113,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E7B58A1CC2AC0600A0062D /* RNIndy.m in Sources */,
+				94AE449022D8C50B00F246E9 /* IndyConnector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +214,12 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
@@ -219,6 +234,10 @@
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
