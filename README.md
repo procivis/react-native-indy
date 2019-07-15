@@ -1,6 +1,8 @@
 
 # React Native Indy SDK
 
+**iOS only at the moment**
+
 ## Getting started
 
 `$ npm install react-native-indy --save`
@@ -9,7 +11,7 @@
 
 `$ react-native link react-native-indy`
 
-Add `Indy.framework` to Embedded libraries
+Add `Indy.framework` to your Embedded libraries
 
 ### Manual installation
 
@@ -20,7 +22,7 @@ Add `Indy.framework` to Embedded libraries
 3. In XCode, in the project navigator, select your project. Add `libRNIndy.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
 
-#### Android
+#### Android (not supported yet)
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
   - Add `import com.reactlibrary.RNIndyPackage;` to the imports at the top of the file
@@ -37,8 +39,15 @@ Add `Indy.framework` to Embedded libraries
 
 ## Usage
 ```javascript
-import RNIndy from 'react-native-indy';
-import { createWallet } from 'react-native-indy';
+import { randomBytes } from "crypto";
+import { createWallet, generateWalletKey } from "react-native-indy";
 
-await createWallet("wallet1");
+// use native randomBytes to ensure sound randomness!
+const seed = randomBytes(32).toString("hex");
+
+// generate a key to encrypt the wallet
+const key = await generateWalletKey(seed);
+
+// create a wallet with the generated key
+const result = await createWallet("wallet", key);
 ```
