@@ -12,8 +12,8 @@
 @interface IndyConnector : NSObject
 
 + (void) connectToLedger:(void (^)(NSError *error))callback;
-+ (void) createWallet:(NSString *)name callback:(void (^)(NSError *error))callback;
-
++ (void) createWallet:(NSString *)name key:(NSString *)key callback:(void (^)(NSError *error))callback;
++ (void) generateCredentials:(NSString *)seed callback:(void (^)(NSError *error, NSString *key))callback;
 @end
 
 #endif /* IndyConnector_h */

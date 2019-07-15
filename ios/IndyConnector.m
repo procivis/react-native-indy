@@ -13,14 +13,16 @@
 
 @implementation IndyConnector
 
-NSString *credentials = @"{\"key\":\"6nxtSiXFvBd593Y2DCed2dYvRY1PGK9WMtxCBjLzKgbw\", \"key_derivation_method\": \"RAW\"}";
+NSString *credentials = @"{\"key\":\"%@\", \"key_derivation_method\": \"RAW\"}";
 
-+ (void) openWallet:(NSString *)name callback:(void (^)(NSError *error))callback {
++ (void) openWallet:(NSString *)name key:(NSString *)key callback:(void (^)(NSError *error))callback {
     NSString *walletConfig = [NSString stringWithFormat:@"{\"id\":\"%@\"}", name];
+    NSString *credentialsConfig = [NSString stringWithFormat:credentials, key];
+  
     __block IndyHandle walletHandle;
     [[IndyWallet sharedInstance]
       openWalletWithConfig:walletConfig
-      credentials:credentials
+      credentials:credentialsConfig
       completion:^(NSError *error, IndyHandle h) {
         walletHandle = h;
         if ([error code]) {
@@ -31,13 +33,15 @@ NSString *credentials = @"{\"key\":\"6nxtSiXFvBd593Y2DCed2dYvRY1PGK9WMtxCBjLzKgb
     }];
 }
 
-+ (void) createWallet:(NSString *)name callback:(void (^)(NSError *error))callback {
-
++ (void) createWallet:(NSString *)name
+                  key:(NSString *)key
+             callback:(void (^)(NSError *error))callback
+{
     NSString *walletConfig = [NSString stringWithFormat:@"{\"id\":\"%@\"}", name];
-  
+    NSString *credentialsConfig = [NSString stringWithFormat:credentials, key];
     [[IndyWallet sharedInstance]
       createWalletWithConfig:walletConfig
-      credentials:credentials
+      credentials:credentialsConfig
       completion:callback
     ];
 }
@@ -52,6 +56,13 @@ NSString *credentials = @"{\"key\":\"6nxtSiXFvBd593Y2DCed2dYvRY1PGK9WMtxCBjLzKgb
       // [self createWallet];
     }
   }];
+}
+
++ (void) generateCredentials:(NSString *)seed
+         callback:(void (^)(NSError *error, NSString *key))callback
+{
+  NSString *seedJson = [NSString stringWithFormat:@"{\"seed\":\"%@\"}", seed];
+  [IndyWallet generateWalletKeyForConfig:seedJson completion:callback];
 }
 
 @end
