@@ -46,18 +46,6 @@ NSString *credentials = @"{\"key\":\"%@\", \"key_derivation_method\": \"RAW\"}";
     ];
 }
 
-+ (void) connectToLedger:(void (^)(NSError *error))callback {
-  [IndyPool setProtocolVersion:@(2)
-    completion:^(NSError *error) {
-    if ([error code]) {
-      // self.StatusText.text = [error localizedDescription];
-    } else {
-      // self.StatusText.text = @"OK\n";
-      // [self createWallet];
-    }
-  }];
-}
-
 + (void) generateCredentials:(NSString *)seed
          callback:(void (^)(NSError *error, NSString *key))callback
 {

@@ -3,8 +3,20 @@ import { NativeModules } from 'react-native';
 
 const { RNIndy } = NativeModules;
 
-const createWallet = RNIndy.createWallet;
-const generateWalletKey = RNIndy.generateWalletKey;
+const {
+  createWallet,
+  generateWalletKey,
+  setProtocolVersion,
+  createPoolLedgerConfig,
+  openPoolLedger,
+  closePoolLedger,
+} = RNIndy;
 
-export { createWallet, generateWalletKey };
-export default RNIndy;
+export {
+  createWallet,
+  generateWalletKey,
+  setProtocolVersion,
+  createPoolLedgerConfig,
+  openPoolLedger,
+  closePoolLedger,
+};
