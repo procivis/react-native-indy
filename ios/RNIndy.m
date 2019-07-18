@@ -79,10 +79,27 @@ RCT_EXPORT_METHOD(
 
 RCT_EXPORT_METHOD(
   createPoolLedgerConfig:(NSString *)name
+             genesisData:(NSString *)genesisData
                 resolver:(RCTPromiseResolveBlock)resolve
                 rejecter:(RCTPromiseRejectBlock)reject
 ) {
-  [IndyPool createPoolLedgerConfigWithPoolName:name poolConfig:nil completion:^(NSError *error) {
+
+  NSString *filePath = [NSString stringWithFormat:@"%@%@.txn", [NSMutableString stringWithString:NSTemporaryDirectory()], name];
+  
+  BOOL success = [[NSFileManager defaultManager]
+    createFileAtPath:filePath
+            contents:[NSData dataWithBytes:[genesisData UTF8String] length:[genesisData length]]
+          attributes:nil];
+  
+  if (!success){
+      NSError *error = [self createError: @"Failed to write the genesis file"];
+      reject(@"RNIndy", [error localizedDescription], error);
+      return;
+  }
+  
+  NSString *poolConfig = [NSString stringWithFormat:@"{\"genesis_txn\":\"%@\"}", filePath];
+
+  [IndyPool createPoolLedgerConfigWithPoolName:name poolConfig:poolConfig completion:^(NSError *error) {
     if (error && [error code]) {
       reject(@"RNIndy", [error description], error);
     } else {
@@ -118,5 +135,10 @@ RCT_EXPORT_METHOD(
     }
   }];
 }
+
+
+/* Pool handle methods */
+
+
 
 @end
