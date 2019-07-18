@@ -8,4 +8,7 @@ declare module 'react-native-indy' {
   export function generateWalletKey(seed: string): Promise<string>;
   export function createAndStoreMyDid(walletHandle: number, seed: string): Promise<{did: string, verkey: string}>;
   export function openWallet(name: string, walletKey: string): Promise<number>;
+
+  export function buildNymRequest(submitterDid: string, targetDid: string): Promise<string>;
+  export function buildGetNymRequest(did: string): Promise<string>;
 }

@@ -12,6 +12,8 @@ const {
   openPoolLedger,
   closePoolLedger,
   createAndStoreMyDid,
+  buildNymRequest,
+  buildGetNymRequest,
 } = RNIndy;
 
 export {
@@ -23,4 +25,6 @@ export {
   openPoolLedger,
   closePoolLedger,
   createAndStoreMyDid,
+  buildNymRequest,
+  buildGetNymRequest,
 };
