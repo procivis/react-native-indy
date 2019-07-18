@@ -3,7 +3,7 @@
 //  RNIndy
 //
 //  Created by Eduard Čuba on 12.07.19.
-//  Copyright © 2019 Facebook. All rights reserved.
+//  Copyright © 2019 Eduard Čuba. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,22 +15,14 @@
 
 NSString *credentials = @"{\"key\":\"%@\", \"key_derivation_method\": \"RAW\"}";
 
-+ (void) openWallet:(NSString *)name key:(NSString *)key callback:(void (^)(NSError *error))callback {
++ (void) openWallet:(NSString *)name key:(NSString *)key callback:(void (^)(NSError *error, IndyHandle handle))callback {
     NSString *walletConfig = [NSString stringWithFormat:@"{\"id\":\"%@\"}", name];
     NSString *credentialsConfig = [NSString stringWithFormat:credentials, key];
-  
-    __block IndyHandle walletHandle;
     [[IndyWallet sharedInstance]
       openWalletWithConfig:walletConfig
       credentials:credentialsConfig
-      completion:^(NSError *error, IndyHandle h) {
-        walletHandle = h;
-        if ([error code]) {
-          // [self.StatusText insertText: [error localizedDescription]];
-        } else {
-          // [self.StatusText insertText: @"OK\n"];
-        }
-    }];
+      completion:callback
+    ];
 }
 
 + (void) createWallet:(NSString *)name
