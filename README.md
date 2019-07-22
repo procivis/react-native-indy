@@ -40,14 +40,37 @@ Add `Indy.framework` to your Embedded libraries
 ## Usage
 ```javascript
 import { randomBytes } from "crypto";
-import { createWallet, generateWalletKey } from "react-native-indy";
+import Indy from "react-native-indy";
 
-// use native randomBytes to ensure sound randomness!
-const seed = randomBytes(32).toString("hex");
+const createWallet = async () => {
+	const name = `wallet` + Date.now();
+	const seed = randomBytes(32).toString("hex");
+	const key = await Indy.generateWalletKey(seed);
+	await Indy.createWallet(name, key);
+	return { name, key };
+}
 
-// generate a key to encrypt the wallet
-const key = await generateWalletKey(seed);
+let walletHandle;
 
-// create a wallet with the generated key
-const result = await createWallet("wallet", key);
+try {
+	// load a wallet or create a wallet for the first time
+	const { name, key } = storedWallet || await createWallet();
+
+	// ... store the name and key for future use ...
+
+	// open an existing wallet
+	walletHandle = await Indy.openWallet(name, key);
+
+	// ... do some work ...
+} catch (e) {
+
+	// ... handle the error ...
+
+} finally {
+	// clean up
+	if (walletHandle) {
+		await Indy.closeWallet(walletHandle);
+	}
+}
+
 ```
