@@ -6,5 +6,5 @@
 #endif
 
 @interface RNIndy : NSObject <RCTBridgeModule>
-
+- (NSError *)createError:(NSString *)message;
 @end
