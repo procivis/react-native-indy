@@ -44,7 +44,10 @@ import Indy from "react-native-indy";
 
 const createWallet = async () => {
 	const name = `wallet` + Date.now();
+
+	// make sure to use native randomBytes to ensure sound randomness!
 	const seed = randomBytes(32).toString("hex");
+
 	const key = await Indy.generateWalletKey(seed);
 	await Indy.createWallet(name, key);
 	return { name, key };
