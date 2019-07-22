@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		940D019022E5F884008926B6 /* RNIndy+Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D018F22E5F884008926B6 /* RNIndy+Wallet.m */; };
 		940D019322E5FC7A008926B6 /* RNIndy+Pool.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D019222E5FC79008926B6 /* RNIndy+Pool.m */; };
+		940D019622E5FD6A008926B6 /* RNIndy+Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D019522E5FD6A008926B6 /* RNIndy+Request.m */; };
 		94299D6622D8D2F900F665D9 /* Indy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94299D6522D8D2F900F665D9 /* Indy.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNIndy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIndy.m */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,8 @@
 		940D019122E5FA00008926B6 /* RNIndy+Wallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNIndy+Wallet.h"; sourceTree = "<group>"; };
 		940D019222E5FC79008926B6 /* RNIndy+Pool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RNIndy+Pool.m"; sourceTree = "<group>"; };
 		940D019422E5FC86008926B6 /* RNIndy+Pool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNIndy+Pool.h"; sourceTree = "<group>"; };
+		940D019522E5FD6A008926B6 /* RNIndy+Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RNIndy+Request.m"; sourceTree = "<group>"; };
+		940D019822E5FD8A008926B6 /* RNIndy+Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNIndy+Request.h"; sourceTree = "<group>"; };
 		94299D6522D8D2F900F665D9 /* Indy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Indy.framework; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNIndy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNIndy.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNIndy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNIndy.m; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 				940D019122E5FA00008926B6 /* RNIndy+Wallet.h */,
 				940D019222E5FC79008926B6 /* RNIndy+Pool.m */,
 				940D019422E5FC86008926B6 /* RNIndy+Pool.h */,
+				940D019522E5FD6A008926B6 /* RNIndy+Request.m */,
+				940D019822E5FD8A008926B6 /* RNIndy+Request.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 				B3E7B58A1CC2AC0600A0062D /* RNIndy.m in Sources */,
 				940D019322E5FC7A008926B6 /* RNIndy+Pool.m in Sources */,
 				940D019022E5F884008926B6 /* RNIndy+Wallet.m in Sources */,
+				940D019622E5FD6A008926B6 /* RNIndy+Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
